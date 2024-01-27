@@ -1,4 +1,4 @@
-![summary](https://github.com/niladrix719/Accountability/assets/91966855/ef00bcb4-861d-4670-bf8f-413056bd8cfa)
+![Screenshot 2024-01-27 at 11 49 48 PM](https://github.com/niladrix719/Accountability/assets/91966855/41c7bfd0-2eb0-414a-853e-5e1652539a06)
 
 ## Introduction
 
