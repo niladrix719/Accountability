@@ -6,7 +6,7 @@ require('dotenv').config();
 
 // Controllers
 
-const { getAllUsers, createUser } = require('./controllers/userController');
+const { getAllUsers, createUser, loginUser } = require('./controllers/userController');
 
 // Middlewares
 
@@ -15,8 +15,9 @@ app.use(express.json());
 
 // Routes
 
-app.post('/users', createUser);
+app.post('/signup', createUser);
 app.get('/users', getAllUsers);
+app.post('/login', loginUser);
 
 app.get('/', (req, res) => {
   res.send('Hi from the server!');
