@@ -1,3 +1,5 @@
+![summary](https://github.com/niladrix719/Accountability/assets/91966855/ef00bcb4-861d-4670-bf8f-413056bd8cfa)
+
 ## Introduction
 
 Our proposed solution addresses the challenges inherent in group projects, aiming to create a more effective and equitable group project experience. We enhance user interaction by incorporating game elements into the solution design. This project is developed for Microsoft’s Imagine Cup, with a specific focus on tackling the challenges of group projects in the education sector.
