@@ -1,35 +1,26 @@
-const pool = require('../db');
+const sql = require('@vercel/postgres');
 
 // get all users
 
 const getAllUsers = async (req, res) => {
-  try{
-    pool.query('SELECT * FROM users', (err, results) => {
-      if(err){
-        throw err;
-      }
-      res.status(200).json(results.rows);
-    });
-  }
-  catch(err){
-    console.error(err.message);
+  try {
+    const result = await sql`SELECT * FROM users`;
+    return res.status(200).json({ result });
+  } catch (error) {
+    return res.status(500).json({ error });
   }
 }
 
 // create a user
 
 const createUser = async (req, res) => {
-  try{
+  try {
     const { username, password, email } = req.body;
-    pool.query('INSERT INTO users (username, password, email, created_on) VALUES ($1, $2, $3, $4)', [username, password, email, new Date()], (err, results) => {
-      if(err){
-        throw err;
-      }
-      res.status(201).send(`User added with ID: ${results.insertId}`);
-    });
-  }
-  catch(err){
-    console.error(err.message);
+    const result =
+      await sql`INSERT INTO users (username, password, email, created_on) VALUES (${username}, ${password}, ${email}, ${new Date()}) RETURNING *`;
+    return res.status(201).json({ result });
+  } catch (error) {
+    return res.status(500).json({ error });
   }
 }
 
