@@ -13,6 +13,6 @@ At its core, our solution comprises three main components:
 3. **Anonymous Feedback System:** Implementing an anonymous compliment and critique system to provide constructive feedback while maintaining a positive and collaborative environment.
 
 <br>
-  <img src="https://github.com/niladrix719/Accountability/assets/91966855/41c7bfd0-2eb0-414a-853e-5e1652539a06" alt="Screenshot 2024-01-27 at 11 49 48 PM" />
+  <img src="https://github.com/niladrix719/Accountability/assets/91966855/41c7bfd0-2eb0-414a-853e-5e1652539a06" alt="Imagine Cup logo" />
 <br>
 
