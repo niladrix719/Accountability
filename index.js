@@ -8,6 +8,7 @@ require('dotenv').config();
 
 const { getAllUsers, createUser, loginUser } = require('./controllers/userController');
 const { getAllClasses, createClass, joinClass, getAllClassMembers } = require('./controllers/classController');
+const { getAllProjects, createProject, joinProject, getAllProjectMembers } = require('./controllers/projectController');
 
 // Middlewares
 
@@ -19,6 +20,11 @@ app.use(express.json());
 app.get('/users', getAllUsers);
 app.post('/signup', createUser);
 app.post('/login', loginUser);
+
+app.get('/projects', getAllProjects);
+app.post('/create/project', createProject);
+app.post('/join/project', joinProject);
+app.post('/project/members', getAllProjectMembers);
 
 app.get('/classes', getAllClasses);
 app.post('/create/class', createClass);
