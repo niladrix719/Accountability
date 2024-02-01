@@ -22,7 +22,7 @@ const getAllUsers = async (req, res) => {
 const createUser = async (req, res) => {
   try{
     const { username, password, email } = req.body;
-    pool.query('INSERT INTO users (username, password, email, created_on) VALUES ($1, $2, $3, $4) RETURNING *', [username, password, email, new Date()], (err, results) => {
+    pool.query('INSERT INTO users (username, password, email, characteristics, created_on) VALUES ($1, $2, $3, $4, $5) RETURNING *', [username, password, email, [], new Date()], (err, results) => {
       if(err){
         throw err;
       }

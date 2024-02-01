@@ -27,10 +27,12 @@ const createProject = async (req, res) => {
     const decoded = jwt.verify(token, process.env.JWT_SECRET);
 
     const { id } = decoded;
+    
+    const randomCode = Math.random().toString(36).substring(2, 10);
 
     const projectResult = await pool.query(
-      'INSERT INTO projects (project_name, project_goal, project_admin, total_members, created_on) VALUES ($1, $2, $3, $4, $5) RETURNING *',
-      [project_name, project_goal, id, 1, new Date()]
+      'INSERT INTO projects (project_name, project_goal, project_code, project_admin, total_members, created_on) VALUES ($1, $2, $3, $4, $5, $6) RETURNING *',
+      [project_name, project_goal, randomCode, id, 1, new Date()]
     );
 
     const projectId = projectResult.rows[0].id;
