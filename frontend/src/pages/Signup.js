@@ -2,6 +2,29 @@ import React from 'react'
 import ok from '../assets/ok.png'
 import { Link } from 'react-router-dom'
 export default function Signup() {
+  const [email, setEmail] = React.useState('')
+  const [password, setPassword] = React.useState('')
+  const [username, setUsername] = React.useState('')
+
+  const handleSubmit = (e) => {
+    e.preventDefault()
+
+    console.log(email + password + username)
+    
+    fetch('http://localhost:4000/signup', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({ email, password, username })
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        const token = data.token;
+        localStorage.setItem('token', token);
+      })
+  }
+
   return (
     <div>
       <div className="flex items-center text-3xl min-h-screen p-4 bg-gray-100 lg:justify-center">
@@ -27,7 +50,7 @@ export default function Signup() {
         </div>
         <div className="p-5 bg-white md:flex-1">
           <h3 className="my-4 text-4xl font-semibold text-gray-700">Create Account</h3>
-          <form action="#" className="flex flex-col space-y-5">
+          <form className="flex flex-col space-y-5">
             <div className="flex flex-col space-y-1">
               <label for="email" className="text-sm font-semibold text-gray-500">Email address</label>
               <input
@@ -35,6 +58,7 @@ export default function Signup() {
                 id="email"
                 autofocus
                 className="px-4 py-2 transition duration-300 border border-gray-300 rounded focus:border-transparent focus:outline-none focus:ring-4 focus:ring-blue-200"
+                onChange={(e) => setEmail(e.target.value)}
               />
             </div>
             <div className="flex flex-col space-y-1">
@@ -53,6 +77,7 @@ export default function Signup() {
                 id="username"
                 autofocus
                 className="px-4 py-2 transition duration-300 border border-gray-300 rounded focus:border-transparent focus:outline-none focus:ring-4 focus:ring-blue-200"
+                onChange={(e) => setUsername(e.target.value)}
               />
             </div>
             <div className="flex flex-col space-y-1">
@@ -64,6 +89,7 @@ export default function Signup() {
                 type="password"
                 id="password"
                 className="px-4 py-2 transition duration-300 border border-gray-300 rounded focus:border-transparent focus:outline-none focus:ring-4 focus:ring-blue-200"
+                onChange={(e) => setPassword(e.target.value)}
               />
             </div>
             <div className="flex items-center space-x-2">
@@ -76,8 +102,9 @@ export default function Signup() {
             </div>
             <div>
               <button
-                type="submit"
+                type='submit'
                 className="w-full px-4 py-2 text-lg font-semibold text-white transition-colors duration-300 bg-blue-500 rounded-md shadow hover:bg-blue-600 focus:outline-none focus:ring-blue-200 focus:ring-4"
+                onClick={(e) => handleSubmit(e)}
               >
                 Log in
               </button>
