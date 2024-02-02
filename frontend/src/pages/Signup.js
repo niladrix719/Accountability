@@ -1,10 +1,12 @@
 import React from 'react'
 import ok from '../assets/ok.png'
 import { Link } from 'react-router-dom'
-export default function Signup() {
+import { useNavigate } from 'react-router-dom';
+export default function Signup(props) {
   const [email, setEmail] = React.useState('')
   const [password, setPassword] = React.useState('')
   const [username, setUsername] = React.useState('')
+  const navigate = useNavigate();
 
   const handleSubmit = (e) => {
     e.preventDefault()
@@ -22,6 +24,8 @@ export default function Signup() {
       .then((data) => {
         const token = data.token;
         localStorage.setItem('token', token);
+        props.setUser(data.data.user)
+        navigate('/')
       })
   }
 

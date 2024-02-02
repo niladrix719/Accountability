@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 
-const DropdownMenu = () => {
+const DropdownMenu = (props) => {
   const [isOpen, setIsOpen] = useState(false);
 
   const toggleDropdown = () => {
@@ -11,6 +11,7 @@ const DropdownMenu = () => {
   const handleSignOut = (e) => {
     e.preventDefault();
     localStorage.removeItem("token");
+    props.setUser(null);
     window.location.href = "/login";
   }
 
@@ -71,7 +72,7 @@ const DropdownMenu = () => {
   );
 };
 
-export default function Navbar() {
+export default function Navbar(props) {
   return (
     <nav className="bg-gradient-to-r from-blue-500 to-purple-500 p-4 rounded-md">
       <div className="flex items-center justify-between">
@@ -82,10 +83,14 @@ export default function Navbar() {
           Accountability
         </Link>
         <div className="flex items-center space-x-4">
-          <DropdownMenu />
-          <Link to='/signup' className="bg-white text-gray-800 px-4 py-2 rounded">
+          <DropdownMenu setUser={props.setUser} />
+          {!props.user && <Link to='/signup' className="bg-white text-gray-800 px-4 py-2 rounded">
             Sign In
-          </Link>
+          </Link>}
+          {props.user && <Link to='/profile' className="bg-white text-gray-800 px-4 py-2 rounded">
+            {props.user.username}
+            </Link>
+          }
         </div>
       </div>
     </nav>

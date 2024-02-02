@@ -1,10 +1,12 @@
 import React from 'react'
 import image from  "./../assets/image.jpg";
 import { Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 // import { TEInput, TERipple } from "tw-elements-react";
-export default function Login() {
+export default function Login(props) {
   const [email, setEmail] = React.useState('')
   const [password, setPassword] = React.useState('')
+  const navigate = useNavigate();
 
   const handleSubmit = (e) => {
     e.preventDefault()
@@ -20,6 +22,8 @@ export default function Login() {
       .then((data) => {
         const token = data.token;
         localStorage.setItem('token', token);
+        props.setUser(data.data.user)
+        navigate('/')
       })
   }
   return (
