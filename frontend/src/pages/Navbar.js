@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { Link } from "react-router-dom";
 
 const DropdownMenu = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -6,6 +7,12 @@ const DropdownMenu = () => {
   const toggleDropdown = () => {
     setIsOpen(!isOpen);
   };
+
+  const handleSignOut = (e) => {
+    e.preventDefault();
+    localStorage.removeItem("token");
+    window.location.href = "/login";
+  }
 
   return (
     <div className="relative inline-block text-left">
@@ -48,11 +55,11 @@ const DropdownMenu = () => {
             </a>
             <form method="POST" action="#" role="none">
               <button
-                type="submit"
                 className="text-gray-700 block w-full px-4 py-2 text-left text-sm"
                 role="menuitem"
                 tabIndex="-1"
                 id="menu-item-3"
+                onClick={(e) => handleSignOut(e)}
               >
                 Sign out
               </button>
@@ -68,14 +75,17 @@ export default function Navbar() {
   return (
     <nav className="bg-gradient-to-r from-blue-500 to-purple-500 p-4 rounded-md">
       <div className="flex items-center justify-between">
-        <a href="#" className="text-white text-lg font-bold">
+        {/* <a href="#" className="text-white text-lg font-bold">
           Accountability
-        </a>
+        </a> */}
+        <Link to="/" className="text-white text-lg font-bold">
+          Accountability
+        </Link>
         <div className="flex items-center space-x-4">
           <DropdownMenu />
-          <button className="bg-white text-gray-800 px-4 py-2 rounded">
+          <Link to='/signup' className="bg-white text-gray-800 px-4 py-2 rounded">
             Sign In
-          </button>
+          </Link>
         </div>
       </div>
     </nav>

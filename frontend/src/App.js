@@ -17,8 +17,8 @@ import Progress from './pages/Progress';
 function App() {
   return (
     <div className="App">
-      <Navbar/>
       <Router>
+        <Navbar/>
         <Routes>
           <Route path='/' element={<Home/>}/>
           <Route path="/login" element={<Login />}/>
@@ -27,7 +27,6 @@ function App() {
           <Route path ='/register' element={<Register/>}/>
           <Route path='/project' element={<Project/>}/>
           <Route path='/profile' element={<Profile/>}/>
-          <Route path='/signup' element={<Signup/>}/>
           <Route path='/assignment' element={<Assignment/>}/>
           <Route path='/progress' element={<Progress/>}/>
         </Routes>
