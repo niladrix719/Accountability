@@ -1,5 +1,4 @@
-import Lava from "./lava"
-
+import Level from "./Level"
 const people = [
   {
     name: 'Leslie Alexander',
@@ -27,45 +26,25 @@ const people = [
       'https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80',
     lastSeen: null,
   },
-  {
-    name: 'Lindsay Walton',
-    email: 'lindsay.walton@example.com',
-    level: '1',
-    imageUrl:
-      'https://images.unsplash.com/photo-1517841905240-472988babdf9?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80',
-    lastSeen: '3h ago',
-    lastSeenDateTime: '2023-01-23T13:23Z',
-  },
-  {
-    name: 'Courtney Henry',
-    email: 'courtney.henry@example.com',
-    level: '2',
-    imageUrl:
-      'https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80',
-    lastSeen: '3h ago',
-    lastSeenDateTime: '2023-01-23T13:23Z',
-  },
 ]
 
 export default function Team() {
   return (
-    <div>
-      
-        <Lava />
-      
-    <div className="flex min-h-screen lg:justify-center">
+    <div className="">
+  <Level />
+    <div className="mt-20 flex min-h-screen lg:justify-center">
       <ul level="list" className="divide-y divide-gray-100">
         {people.map((person) => (
           <li key={person.email} className="flex justify-between gap-x-6 py-5">
             <div className="flex min-w-0 gap-x-4">
-              <img className="h-12 w-12 flex-none rounded-full bg-gray-50" src={person.imageUrl} alt="" />
+              <img className="h-15 w-20 flex-none rounded-full bg-gray-50" src={person.imageUrl} alt="" />
               <div className="min-w-0 flex-auto">
-                <p className="text-sm font-semibold leading-6 text-gray-900">{person.name}</p>
-                <p className="mt-1 truncate text-xs leading-5 text-gray-500">{person.email}</p>
+                <p className="text-3xl font-semibold leading-6 text-gray-900">{person.name}</p>
+                <p className="mt-2 truncate text-xl leading-5 text-gray-500">{person.email}</p>
               </div>
             </div>
             <div className="hidden shrink-0 sm:flex sm:flex-col sm:items-end">
-              <p className="text-sm leading-6 text-gray-900">{person.level}</p>
+              <p className="text-xm font-semibold leading-6 text-gray-900">{person.level}</p>
               {person.lastSeen ? (
                 <p className="mt-1 text-xs leading-5 text-gray-500">
                   Last seen <time dateTime={person.lastSeenDateTime}>{person.lastSeen}</time>

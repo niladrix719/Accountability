@@ -1,0 +1,47 @@
+/* Wave.css */
+
+@keyframes liquidFlow {
+    0% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(10px); /* Adjust the flow distance */
+    }
+    100% {
+      transform: translateY(0);
+    }
+  }
+  
+  .liquid-container {
+    margin-top: 25px;
+    display: flex;
+    
+    height: 200px;
+    width: 48%;
+    overflow: hidden;
+    bottom: 0; /* Position at the bottom */
+  }
+  
+  .liquid-flow::before,
+  .liquid-flow::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 50%;
+    background: linear-gradient(to bottom, #FFA500, #FF4500);
+  }
+  
+  .liquid-flow::before {
+    top: 0;
+  }
+  
+  .liquid-flow::after {
+    bottom: 0;
+  }
+  
+  .liquid-flow {
+    width: 100%;
+    height: 100%;
+    animation: liquidFlow 2s infinite; /* Adjust the duration of the animation */
+  }
+  
